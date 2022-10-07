@@ -78,6 +78,20 @@ body {
   list-style-type: none;
   padding: 0 10px 10px 10px;
 }
+@media all and (min-width: 1024px) {
+  .operation__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+@media all and (min-width: 700px) and (max-width: 1023px) {
+  .operation__list {
+    display: flex;
+    flex-direction: column;
+  }
+}
 .operation__step {
   font-weight: bold;
   border-radius: 1rem;
@@ -89,6 +103,16 @@ body {
   display: flex;
   align-items: center;
   position: relative;
+}
+@media all and (min-width: 1024px) {
+  .operation__step {
+    width: 300px;
+  }
+}
+@media all and (min-width: 700px) and (max-width: 1023px) {
+  .operation__step {
+    width: 55%;
+  }
 }
 .operation__step:hover {
   opacity: 0.9;
@@ -123,6 +147,12 @@ body {
   background-color: #f2f2f2;
   max-width: 1200px;
 }
+@media all and (min-width: 1024px) {
+  .restaurants {
+    width: 100%;
+    max-width: 100%;
+  }
+}
 .restaurants__list {
   display: grid;
   grid-template: repeat(4, 1fr)/repeat(1, 1fr);
@@ -132,11 +162,27 @@ body {
 .restaurants__list a {
   text-decoration: none;
 }
+@media all and (min-width: 1024px) {
+  .restaurants__list {
+    padding: 20px 20px;
+    grid-template: repeat(1, 1fr)/repeat(4, 1fr);
+  }
+}
+@media all and (min-width: 700px) and (max-width: 1023px) {
+  .restaurants__list {
+    width: 50%;
+  }
+}
 
 .card {
   width: 100%;
   border-radius: 30px;
   box-shadow: 0px 5px 25px 4px rgba(0, 0, 0, 0.1), 0px 7px 15px 0px rgba(0, 0, 0, 0.1);
+}
+@media all and (min-width: 700px) and (max-width: 1023px) {
+  .card {
+    margin-left: 50%;
+  }
 }
 .card__image {
   width: 100%;
@@ -193,6 +239,11 @@ body {
   padding-bottom: 10px;
   color: white;
 }
+@media all and (min-width: 1024px) {
+  .footer__logo {
+    text-align: center;
+  }
+}
 .footer__list {
   list-style-type: none;
   padding: 0;
@@ -200,6 +251,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+@media all and (min-width: 1024px) {
+  .footer__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 100px;
+  }
 }
 .footer__restaurant span {
   margin-left: 15px;
