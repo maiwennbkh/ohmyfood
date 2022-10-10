@@ -101,6 +101,7 @@ body {
 .menu__list {
   list-style-type: none;
   padding: 0;
+  padding-bottom: 10px;
 }
 .menu__title {
   margin-left: 20px;
@@ -110,11 +111,12 @@ body {
   box-shadow: 0px 5px 25px 4px rgba(0, 0, 0, 0.1), 0px 7px 15px 0px rgba(0, 0, 0, 0.1);
   background-color: white;
   height: 70px;
-  width: 90%;
+  width: 95%;
   margin: auto;
   margin-bottom: 20px;
   padding-left: 15px;
   padding-right: 15px;
+  position: relative;
 }
 .menu__dish h3 {
   margin: 0;
@@ -123,19 +125,24 @@ body {
 .menu__dish p {
   margin: 0;
   padding-top: 5px;
-  display: flex;
-  justify-content: space-between;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 87%;
+  text-overflow: ellipsis;
 }
 .menu__dish span {
   font-weight: bold;
+  padding-right: 10px;
+  position: absolute;
+  right: 0;
 }
 
 .btn {
   background: linear-gradient(#FF79DA, #9356DC);
   opacity: 1;
   box-shadow: 0px 5px 25px 4px rgba(0, 0, 0, 0.1), 0px 7px 15px 0px rgba(0, 0, 0, 0.1);
-  color: white;
   border-radius: 2rem;
+  color: white;
   font-size: 1.1em;
   padding: 20px 10px;
   cursor: pointer;
@@ -143,6 +150,19 @@ body {
   margin: auto;
   margin-top: 40px;
   margin-bottom: 40px;
+}
+.btn-menu {
+  background: linear-gradient(#FF79DA, #9356DC);
+  opacity: 1;
+  box-shadow: 0px 5px 25px 4px rgba(0, 0, 0, 0.1), 0px 7px 15px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+  color: white;
+  width: 190px;
+  text-align: center;
+  padding: 15px;
+  margin-top: 0px;
+  margin-left: 25%;
+  margin-bottom: 50px;
 }
 .btn:hover {
   opacity: 0.7;
@@ -316,6 +336,13 @@ body {
 }
 
 .footer {
+  width: 100%;
+  background-color: rgba(31, 28, 28, 0.897);
+  padding: 10px 20px 20px 20px;
+}
+.footer-menu {
+  margin-top: 1140px;
+  position: absolute;
   width: 100%;
   background-color: rgba(31, 28, 28, 0.897);
   padding: 10px 20px 20px 20px;
