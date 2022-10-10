@@ -121,6 +121,12 @@ body {
     &__logo{
         width: 55%;
         padding: 15px;
+        @include desktop {
+            width: 15%;
+        }
+        @include tablette {
+            width: 25%;
+        }
     }
     &__arrow {
         position: absolute;
@@ -131,6 +137,10 @@ body {
     }
     &__image {
         width: 100%;
+        @include desktop {
+            height: 700px;
+            object-fit: cover;
+        }
     }
 }
 
@@ -142,10 +152,17 @@ body {
         border-radius: 40px 40px 0px 0px;
         position: absolute;
         top: -35px;
+        @include desktop {
+            top: -235px;
+        }
         &__title {
         font-family: 'Shrikhand', cursive;
         font-size: 1.7em;
         margin-left: 20px;
+        @include desktop {
+            font-size: 1.8em;
+            text-align: center;
+        }
         }
         &__heart {
         font-size: 2em;
@@ -159,13 +176,25 @@ body {
 
 .menu {
     width: 100%;
+    @include desktop {
+        margin-top: 80px;
+        display: grid;
+        grid-template: repeat(1,1fr)/repeat(3,1fr);
+    }
     &__list {
         list-style-type: none;
         padding: 0;
         padding-bottom: 10px;
+        @include desktop {
+            display: grid;
+            grid-area: 3;
+        }
     }
     &__title {
         margin-left: 20px;
+        @include desktop {
+            grid-area: 1;
+        }
     }
     &__dish {
         border-radius: 1rem;
@@ -217,6 +246,16 @@ body {
         margin-top: 0px;
         margin-left: 25%;
         margin-bottom: 50px;
+        @include desktop {
+            text-align: center;
+            padding: 20px;
+            margin-left: 42%;
+            margin-bottom: 80px;
+            margin-top: 100px;
+        }
+        @include tablette {
+            margin-left: 35%;
+        }
     }
     &:hover{
         @include btn-hover;
@@ -335,8 +374,6 @@ body {
         height: 100%;
         border-radius: 30px 30px 0px 0px;
         object-fit: cover;
-        @include desktop {      
-        }
     }
     &__title {
         font-weight: bold;   
@@ -365,7 +402,7 @@ body {
 .footer {
     @include footer-style;
     &-menu {
-        margin-top: 1140px;
+        margin-top: 540px;
         position: absolute;
         @include footer-style;
     }
@@ -374,9 +411,6 @@ body {
         font-size: large;
         padding-bottom: 10px;
         color:#ffff;
-        @include desktop {
-            text-align: center;
-        }
     }
     &__list {
         list-style-type: none;
