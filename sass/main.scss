@@ -36,11 +36,8 @@ $breakpoints: (
     box-shadow: 0px 5px 25px 4px rgba(0, 0, 0, 0.349),0px 7px 15px 0px rgba(0, 0, 0, 0.349);
 }
 @mixin heart-style {
-    background: linear-gradient($color-secondary, $color-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 600;
-    transform: scale(1.1);
+    opacity: 1;
+    transform: scale(1.2);
 }
 
 @mixin operation-style {
@@ -84,11 +81,13 @@ $breakpoints: (
 @keyframes spin {
     0% {
         transform: rotate(-260deg);
+
     }
     100% {
         transform: rotate(0deg);
     }
 }
+
 
 .purplecolor{
     color: $color-primary;
@@ -183,32 +182,42 @@ body {
         @include desktop {
             top: -235px;
         }
+
         &__title {
-        font-family: 'Shrikhand', cursive;
-        font-size: 1.5em;
-        margin-left: 20px;
-        @include desktop {
-            font-size: 1.8em;
-            text-align: center;
-        }
-        }
-        &__heart {
-        font-size: 2em;
-        font-weight: 100;
-        -webkit-text-stroke: 1.5px #EAEAEA;
-        position: absolute;
-        top: 22px;
-        right: 27px;
-        transition: background 400ms;
-        &:active {
-            @include heart-style;
-        }
-        @include desktop {
-            &:hover {
-                @include heart-style;
+            font-family: 'Shrikhand', cursive;
+            font-size: 1.5em;
+            margin-left: 20px;
+            @include desktop {
+                font-size: 1.8em;
+                text-align: center;
             }
         }
+        & i {
+            position: absolute;
+            top: 22px;
+            right: 20px;
+            font-size: 2em;
         }
+        &__heartempty {
+            font-weight: 100;
+            -webkit-text-stroke: 1.5px #EAEAEA;
+        }
+            
+        &__heartfull {
+            color: transparent;
+            -webkit-background-clip: text;
+            background-image: linear-gradient(#FF79DA, #9356DC);
+            transition: all 600ms ease;
+            opacity: 0;
+            &:active {
+                @include heart-style;
+            }
+            @include desktop {
+                &:hover {
+                    @include heart-style;
+                }     
+            }
+        }      
     }
 }
 
@@ -255,7 +264,6 @@ body {
         margin-bottom: 20px;
         position: relative;
         animation: progress-appear 1s;
-        animation-fill-mode: both;
         @for $i from 1 through 3 {
             &:nth-child(#{$i}) {
                 animation-delay: 100ms * $i;
@@ -274,7 +282,10 @@ body {
             & h4 {
                 padding: 0;
                 margin: 0;
+                text-overflow: ellipsis;
+                overflow: hidden;
             }
+            
             & p {
                 padding: 0;
                 margin: 0;  
@@ -289,6 +300,7 @@ body {
             font-weight: bold;
             display: flex;
             align-items: flex-end;
+            z-index: 1;
         }
         &-check {
             display: none;
@@ -299,23 +311,22 @@ body {
             border-radius: 0 1rem 1rem 0;
             transition: margin-right 1s;
             flex-shrink: 0;
+            cursor: pointer;
             display: grid;
             place-items: center;
                 & i {
                     color: white;
                     font-size: 25px;
                 }
-        }
+            }
         &:hover i {
             animation: spin 1s ease-in-out;
         }
         &:hover .menu__description-check {
             margin-right: 0;
         }
-    }
-    
+    } 
 }
-
 
 .btn {
     @include btn-style;
@@ -426,6 +437,11 @@ body {
         width: 100%;
         & a {
             text-decoration: none;
+            @include desktop {
+                &:hover {
+                    transform: scale(1.03);
+                }
+            }
         }
         @include desktop {
             padding: 20px 20px;
@@ -486,27 +502,44 @@ body {
     }
     &__heart {
         font-size: xx-large;
-        &-empty {
-            -webkit-text-stroke: 1px white;
-            font-weight: 100;
-            transition: transform background 400ms;
-            &:active {
+        position: relative;
+
+        & i {
+            position: absolute;
+            right: 1rem;
+            top: -1rem;
+            font-size: 2rem;
+
+        }
+    &-empty {
+        -webkit-text-stroke: 1px white;
+        font-weight: 100;
+    
+    }
+    &-full {
+        color: transparent;
+        -webkit-background-clip: text;
+        background-image: linear-gradient($color-secondary, $color-primary); 
+        transition: all 600ms ease;
+        opacity: 0;
+        &:active {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+        @include desktop {
+            &:hover {
                 @include heart-style;
             }
-            @include desktop {
-                &:hover {
-                 @include heart-style;
-
-                }
-            }
         }
+    }
+
     }
 }
 
 .footer {
     @include footer-style;
     &-menu {
-        margin-top: 1140px;
+        margin-top: 1130px;
         position: absolute;
         @include footer-style;
         @include desktop {
@@ -542,5 +575,42 @@ body {
     &__contact a{
         text-decoration: none;
         color:#ffff
+    }
+}
+
+.loader {
+    background: #ffff;
+    height: 100%;
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    opacity: 0.9;
+    animation: loader 2s 2s forwards;
+    transform-origin: top;
+    display: grid;
+    place-items: center;
+    &::after {
+        content: "";
+        height: 100px;
+        width: 100px;
+        border-top: 5px solid $color-secondary;
+        border-bottom: 5px solid $color-tertiary;
+        border-left: 5px solid $color-primary;
+        border-right: 5px solid #EAEAEA;
+        border-radius: 50%;
+        animation: spinner 2s infinite ease-in-out;
+    }
+}
+@keyframes loader {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
     }
 }
