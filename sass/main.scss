@@ -88,6 +88,19 @@ $breakpoints: (
     }
 }
 
+@keyframes loader {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 .purplecolor{
     color: $color-primary;
@@ -178,29 +191,36 @@ body {
         background-color: #EAEAEA;
         border-radius: 40px 40px 0px 0px;
         position: absolute;
-        top: -70px;
+        top: -55px;
+        &__note {
+            width: 100%;
+            background-color: #EAEAEA;
+            border-radius: 40px 40px 0px 0px;
+            position: absolute;
+            top: -85px;
+            padding-bottom: 25px;
+        }
         @include desktop {
-            top: -235px;
+            top: -200px;
         }
 
         &__title {
             font-family: 'Shrikhand', cursive;
             font-size: 1.5em;
             margin-left: 20px;
+            padding: 10px 0px;
             @include desktop {
                 font-size: 1.8em;
                 text-align: center;
             }
         }
-        & i {
-            position: absolute;
-            top: 22px;
-            right: 20px;
-            font-size: 2em;
-        }
         &__heartempty {
             font-weight: 100;
             -webkit-text-stroke: 1.5px #EAEAEA;
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2em;
         }
             
         &__heartfull {
@@ -209,6 +229,10 @@ body {
             background-image: linear-gradient(#FF79DA, #9356DC);
             transition: all 600ms ease;
             opacity: 0;
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2em;
             &:active {
                 @include heart-style;
             }
@@ -264,12 +288,12 @@ body {
         margin-bottom: 20px;
         position: relative;
         animation: progress-appear 1s;
-        @for $i from 1 through 3 {
+        @for $i from 1 through 4 {
             &:nth-child(#{$i}) {
                 animation-delay: 100ms * $i;
             }
         }
-        }
+    }
     &__description {
         display: flex;
         overflow: hidden;
@@ -314,6 +338,7 @@ body {
             cursor: pointer;
             display: grid;
             place-items: center;
+            height: 71px;
                 & i {
                     color: white;
                     font-size: 25px;
@@ -353,7 +378,7 @@ body {
             padding: 20px;
             margin-left: 42%;
             margin-bottom: 80px;
-            margin-top: 100px;
+            margin-top: 50px;
         }
         @include tablette {
             margin-left: 35%;
@@ -423,7 +448,7 @@ body {
 }
 
 .restaurants {
-    padding: 20px;
+    padding: 20px 20px 60px;
     background-color: lighten(#EAEAEA, 3%);
     max-width: 1200px;
     @include desktop {
@@ -539,17 +564,24 @@ body {
 .footer {
     @include footer-style;
     &-menu {
-        margin-top: 1130px;
+        margin-top: 1170px;
         position: absolute;
         @include footer-style;
         @include desktop {
             margin-top: 540px;
         }
+        &__note {
+            margin-top: 1250px;
+            position: absolute;
+            @include footer-style;
+            @include desktop {
+            margin-top: 730px;
+            }
+        }
     }
     &__logo {
         font-family: 'Shrikhand', cursive;
         font-size: large;
-        padding-bottom: 10px;
         color:#ffff;
     }
     &__list {
@@ -586,7 +618,6 @@ body {
     z-index: 2;
     opacity: 0.9;
     animation: loader 2s 2s forwards;
-    transform-origin: top;
     display: grid;
     place-items: center;
     &::after {
@@ -599,18 +630,5 @@ body {
         border-right: 5px solid #EAEAEA;
         border-radius: 50%;
         animation: spinner 2s infinite ease-in-out;
-    }
-}
-@keyframes loader {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(0);
-    }
-}
-@keyframes spinner {
-    to {
-        transform: rotate(360deg);
     }
 }
